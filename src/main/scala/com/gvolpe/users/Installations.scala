@@ -3,6 +3,7 @@ package com.gvolpe.users
 import akka.actor._
 import akka.pattern.ask
 import akka.util.Timeout
+import scala.concurrent.duration._
 import spray.http._
 import spray.httpx.SprayJsonSupport._
 import spray.json.DefaultJsonProtocol
@@ -34,7 +35,7 @@ class InstallationsActor extends Actor with InstallationsService {
 // this trait defines our service behavior independently from the service actor
 trait InstallationsService extends HttpService {
 
-  implicit val timeout = Timeout(5)
+  implicit val timeout = Timeout(5.seconds)
   
   val myRoute = {
     
